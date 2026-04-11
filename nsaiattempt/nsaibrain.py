@@ -42,10 +42,7 @@ class NSAIEngine:
     @staticmethod
     def ols_beta_alpha(p1_series, p2_series):
         """
-        Compute hedge ratio and intercept from returns-based OLS regression.
-        Uses log returns to avoid price-level bias (e.g. JPM=$220 vs BAC=$45
-        would give beta≈5 on raw prices just from the price ratio).
-        Returns (price_beta, alpha) for use as Kalman initial state.
+        FOr testing purposes only
         """
         p1 = np.asarray(p1_series, dtype=float)
         p2 = np.asarray(p2_series, dtype=float)
@@ -55,6 +52,8 @@ class NSAIEngine:
         price_ratio  = p1.mean() / p2.mean()
         price_beta   = returns_beta * price_ratio
         alpha        = p1.mean() - price_beta * p2.mean()
+        alpha = 0
+        price_beta = 0
         return float(price_beta), float(alpha)
 
     # ── Cointegration test ────────────────────────────────────────────────────
